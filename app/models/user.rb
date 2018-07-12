@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   
   scope :excluding_archived, lambda { where(archived_at: nil) }
   
+  has_many :roles
+  
   def archive
     self.update(archived_at: Time.now)
   end    
@@ -17,6 +19,11 @@ class User < ActiveRecord::Base
   def inactive_message
     archived_at.nil? ? super : :archived
   end
+  
+  def role_on(project)
+    roles.find_by(project_id: project).try(:name)
+  end
+  
   def to_s
     "#{email} (#{admin? ? 'Admin' : 'User'})"
   end
