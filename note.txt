@@ -1,0 +1,6 @@
+I update the firefox for the version of 57.0 (64-bit) and don't run. I have this problems so many times with the Firefox. So I think it's better to do with Chrome.
+So I set up with Chrome on spec/support/capybara.rb
+Capybara.javascript_driver = :selenium_chrome
+and then was needed to install the chromedriver, So for install:
+brew install chromedriver
+And work's with Chrome.
