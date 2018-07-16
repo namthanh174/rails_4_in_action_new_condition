@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :states, only: [:index, :new, :create]
+    resources :states, only: [:index, :new, :create] do
+      member do
+        get :make_default
+      end
+    end
   end
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
