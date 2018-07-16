@@ -7,5 +7,11 @@ class Ticket < ActiveRecord::Base
   has_many :attachments, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  before_create :assign_default_state
   accepts_nested_attributes_for :attachments, reject_if: :all_blank
+  
+  private
+  def assign_default_state
+    self.state ||= State.default
+  end
 end
