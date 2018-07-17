@@ -1,4 +1,5 @@
 class Ticket < ActiveRecord::Base
+  attr_accessor :tag_names
   belongs_to :project
   belongs_to :author, class_name: "User"
   belongs_to :state
@@ -11,7 +12,9 @@ class Ticket < ActiveRecord::Base
   before_create :assign_default_state
   accepts_nested_attributes_for :attachments, reject_if: :all_blank
 
-  attr_accessor :tag_names
+  searcher do
+    label :tag, from: :tags, field: "name"
+  end
   
   def tag_names=(names)
     @tag_names = names
