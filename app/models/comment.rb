@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  attr_accessor :tag_names
   belongs_to :ticket
   belongs_to :author, class_name: "User"
   belongs_to :state
@@ -10,8 +11,17 @@ class Comment < ActiveRecord::Base
   
   before_create :set_previous_state
   after_create :set_ticket_state
+  after_create :associate_tags_with_ticket
   
   scope :persisted, lambda { where.not(id: nil) }
+
+  def associate_tags_with_ticket
+    if tag_names
+      tag_names.split.each do |name|
+        ticket.tags << Tag.find_or_create_by(name: name)
+      end
+    end
+  end
   
   private
   def set_ticket_state
