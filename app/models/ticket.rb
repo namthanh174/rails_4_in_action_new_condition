@@ -8,8 +8,10 @@ class Ticket < ActiveRecord::Base
   has_many :attachments, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags, uniq: true
+  has_and_belongs_to_many :watchers, join_table: "ticket_watchers", class_name: "User", uniq: true
   
   before_create :assign_default_state
+  after_create :author_watchers_me
   accepts_nested_attributes_for :attachments, reject_if: :all_blank
 
   searcher do
@@ -27,5 +29,11 @@ class Ticket < ActiveRecord::Base
   private
   def assign_default_state
     self.state ||= State.default
+  end
+
+  def author_watchers_me
+    if author.present? && !self.watchers.include?(author)
+      self.watchers << author
+    end
   end
 end

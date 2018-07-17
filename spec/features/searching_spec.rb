@@ -42,7 +42,7 @@ RSpec.feature "Users can search for tickets matching specific criteria" do
     click_link "iteration_1"
     within("#tickets") do
       expect(page).to have_content "Create projects"
-      expect(page).to_not have_content "Craete users"
+      expect(page).to_not have_content "Create users"
     end
   end
 end
