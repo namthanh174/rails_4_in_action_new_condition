@@ -224,6 +224,7 @@ GEM
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    pg (1.0.0)
     public_suffix (3.0.2)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
@@ -346,6 +347,7 @@ DEPENDENCIES
   font-awesome-rails (~> 4.3)
   jbuilder (~> 2.0)
   jquery-rails
+  pg
   pundit (~> 0.3.0)
   rails (= 4.2.5)
   rake (< 11.0)
