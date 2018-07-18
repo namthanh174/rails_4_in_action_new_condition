@@ -2,5 +2,12 @@ language: ruby
 rvm: 2.3.1
 script: bundle exec rspec
 before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+deploy:
+  provider: heroku
+  api_key:
+    secure: DVrbrqTFUexENQz/eRi85dH8O44tKbH9NHOBRQPWrEeHZD/DVr52oXHNUwxKLHvxp3PE4YdmAAqn4/BYEFpRUhK75BrcpE8NAm1SR9owfayawUX6vht1fFXwPgMKqbVWqq8Tsm3B6nGB5Lu6O+M1ioQ85+nd/gTk2HzszQToVeo2f886a+bVj9G/qIe/qRJ4ZBRdaMTF9VGZPVjsUM3ZrADZZW+uM6cdJeP3at/lJjP5Fv1Sp2fUPHQsU8XT0qfANNREz0BVDAtP+hCB4FI/f+hErQwuVrrQ4fTud9y8jNyUX6eA0BMgv5u/9sCmVbW2PWt95ky00dsGjSOljhqF4YLxQDnDrtxdEi4KsCkor3g0h3XFnaCfPA/Vq342pEfLCBYnF1x5GMOVUFLqGuezlGCIPJnuEWWbD7UxsjajFXoAe/T36zGPNKwHbb4IcFMFRUx7DFv1Z8nHXpyvuidJ7P/jh7I+hKF8aNVQReJ46DDictGyUP6jGSnCq19YKAGRj3V50ypBXvTai+Ih+PNPRs5nFqtCbFtgwsz3XwdXZypQGpWw00DJvKOTd06j7wsLcbaI7BiFvWaD3EZTRpCofM9GFtG9dkXzjE9oDJJeB40S34DUdMnbS5DPEXtWm5QxeLxUZHfw9D2d2JG7bcWxYzVy+yaSBZGPErrn7dvqPu0=
+  app: thanh-ticketee
+  on:
+    repo: namthanh174/rails_4_in_action_new_condition
