@@ -4,6 +4,12 @@ script: bundle exec rspec
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
+addons:
+  apt:
+    packages:
+      - chromium-chromedriver
+before_script:
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 deploy:
   provider: heroku
   api_key:
