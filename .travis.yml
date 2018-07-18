@@ -5,9 +5,12 @@ before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 addons:
+  sources:
+    - google-chrome
   apt:
     packages:
       - chromium-chromedriver
+      - google-chrome-stable
 before_script:
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 deploy:
