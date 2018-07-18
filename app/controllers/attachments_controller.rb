@@ -21,7 +21,7 @@ class AttachmentsController < ApplicationController
       File.open(filename, "wb+") do |tf|
         tf.write open(attachment.file.url).read
       end
-    filename
+      filename
     else
       attachment.file.path
     end

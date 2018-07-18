@@ -49,12 +49,10 @@
     <h4>Attachments</h4>
     <div class="attachments">
       <% @ticket.attachments.each do |attachment| %>
-        <% if attachment.file.url.present? %>
           <p>
             <%= link_to File.basename(attachment.file.url), attachment_path(attachment) %>
             (<%= number_to_human_size(attachment.file.size) %>)
           </p>
-        <% end %>
       <% end %>
     </div>
   <% end %>
