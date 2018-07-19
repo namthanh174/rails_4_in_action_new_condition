@@ -16,7 +16,7 @@ class AttachmentsController < ApplicationController
 
   private
   def file_to_send(attachment)
-    if URI.parse(attachment.file.url).scheme
+    if attachment.file.url.present? && URI.parse(attachment.file.url).scheme
       filename = "/tmp/#{attachment.attributes["file"]}"
       File.open(filename, "wb+") do |tf|
         tf.write open(attachment.file.url).read
