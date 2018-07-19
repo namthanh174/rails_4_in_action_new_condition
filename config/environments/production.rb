@@ -79,7 +79,8 @@ Rails.application.configure do
 
   ActionMailer::Base.delivery_method = :smtp
 
-  host = "sandboxf85b1fc24de64a749c8aa1f2ddb7fbd1.mailgun.org"
+  # host = "sandboxf85b1fc24de64a749c8aa1f2ddb7fbd1.mailgun.org"
+  host = ENV['MAILGUN_DOMAIN']
   
   ActionMailer::Base.smtp_settings = {
     port:           ENV['MAILGUN_SMTP_PORT'],
