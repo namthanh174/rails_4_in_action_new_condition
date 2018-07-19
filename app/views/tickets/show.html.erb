@@ -51,7 +51,7 @@
       <% @ticket.attachments.each do |attachment| %>
           <p>
             <%= link_to File.basename(attachment.file.url), attachment_path(attachment) %>
-            (<%= attachment.file.try(:size) || 0 %>)
+            (<%= attachment.file.present? %>)
           </p>
       <% end %>
     </div>
