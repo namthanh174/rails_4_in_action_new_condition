@@ -79,7 +79,7 @@ Rails.application.configure do
 
   ActionMailer::Base.delivery_method = :smtp
 
-  host = "thanh-ticketee.com"
+  host = "thanh-ticketee.mailgun.org"
   
   ActionMailer::Base.smtp_settings = {
     port:           ENV['MAILGUN_SMTP_PORT'],
